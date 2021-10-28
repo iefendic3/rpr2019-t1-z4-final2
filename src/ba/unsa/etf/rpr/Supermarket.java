@@ -1,15 +1,38 @@
 package ba.unsa.etf.rpr;
 
 public class Supermarket {
-    public void dodajArtikl(Artikl biciklo) {
+    private Artikl[] niz ;
+    private int broj;
+    private int max;
 
+    public Supermarket(){
+        niz = new Artikl[50];
+        broj=0;
+        max=50;
+    }
+    public void dodajArtikl(Artikl biciklo) {
+        if(broj==max) return;
+        else{
+            niz[broj]=biciklo;
+            broj++;
+        }
     }
 
     public Artikl[] getArtikli() {
-        return new Artikl[0];
+        return niz;
     }
 
     public Artikl izbaciArtiklSaKodom(String kod) {
-        return null;
+        Artikl a = new Artikl();
+        for(int i=0; i<broj;i++){
+            if(niz[i].getKod().equalsIgnoreCase(kod)){
+                a=niz[i];
+                for(int j=i;j<broj-1;j++){
+                    niz[j]=niz[j+1];
+                }
+            }
+        }
+        broj--;
+        return a;
     }
 }
