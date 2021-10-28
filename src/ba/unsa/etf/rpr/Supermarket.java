@@ -6,9 +6,9 @@ public class Supermarket {
     private int max;
 
     public Supermarket(){
-        niz = new Artikl[50];
+        niz = new Artikl[1000];
         broj=0;
-        max=50;
+        max=1000;
     }
     public void dodajArtikl(Artikl biciklo) {
         if(broj==max) return;

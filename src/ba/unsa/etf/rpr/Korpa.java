@@ -1,6 +1,28 @@
 package ba.unsa.etf.rpr;
 
+import java.util.Arrays;
+
 public class Korpa {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Korpa korpa = (Korpa) o;
+
+        if (broj != korpa.broj) return false;
+        if (max != korpa.max) return false;
+        // Probably incorrect - comparing Object[] arrays with Arrays.equals
+        return Arrays.equals(niz, korpa.niz);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Arrays.hashCode(niz);
+        result = 31 * result + broj;
+        result = 31 * result + max;
+        return result;
+    }
 
     private Artikl[] niz;
     private int broj;
